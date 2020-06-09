@@ -3,10 +3,10 @@
 const fs = require("fs");
 const steem = require('steem');
 
-const config = JSON.parse(fs.readFileSync("config.json"));
+const config = JSON.parse(fs.readFileSync("./config.json"));
 const execSync = require('child_process').execSync;
 
-const functions = require('functions');
+const functions = require('./functions');
 const log = functions.log;
 const arrayInArray = functions.arrayInArray;
 const runInterval = functions.runInterval;

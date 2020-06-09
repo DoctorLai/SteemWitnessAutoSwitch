@@ -1,0 +1,26 @@
+{
+  "name": "steem-witness-auto-switch",
+  "version": "1.0.0",
+  "description": "Steem Witness Auto Switch",
+  "main": "monitor-witness.js",
+  "scripts": {
+    "start": "node monitor-witness.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoctorLai/SteemWitnessAutoSwitch.git"
+  },
+  "keywords": [
+    "steem",
+    "witness"
+  ],
+  "author": "justyy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DoctorLai/SteemWitnessAutoSwitch/issues"
+  },
+  "homepage": "https://github.com/DoctorLai/SteemWitnessAutoSwitch#readme",
+  "dependencies": {
+    "steem": "^0.7.11"
+  }
+}
