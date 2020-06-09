@@ -10,5 +10,6 @@
     "fee": "3.000 STEEM",
     "interval": 60,
     "period": 360,
-    "threshold": 4  
+    "threshold": 4,
+    "rpc_nodes": ["https://api.steemit.com"] 
 }
