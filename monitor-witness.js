@@ -32,18 +32,25 @@ function getWitness(id) {
     });
 }   
 
+function mail(subject, body) {
+    // send email with subject and body here
+    // TODO
+    console.log("MAILTO: " + subject);
+    console.log("MAILTO: " + body);
+}
+
 function switchTo(signing_key) {
     log("Switching to " + signing_key);
     const props = {};    
     steem.broadcast.witnessUpdate(config.key, config.account, config.url, signing_key, props, config.fee, function(err, result) {
-        // TODO: You can send a email/SMS here
+        mail("Switching Witness", "Your Witness Node has been switched to " + consigning_keyfig);
         console.log(err, result, stdout);
     });    
 } 
 
 function reportMissing(missed) {
     log("Report missing: " + missed);
-    // TODO: You can send a email/SMS here
+    mail("Missing a Block", "Your Witness Node hass missed a block - total missing: " + missed);
 }
 
 function startMissingBlocks() {
