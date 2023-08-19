@@ -8,8 +8,10 @@ const execSync = require('child_process').execSync;
 
 const functions = require('./functions');
 const log = functions.log;
-const arrayInArray = functions.arrayInArray;
 const runInterval = functions.runInterval;
+
+// The key to broadcast if we want to disable the witness
+const disabled_key = "STM1111111111111111111111111111111114T1Anm";
 
 // Connect to the specified RPC node
 const rpc_node = config.rpc_nodes ? config.rpc_nodes[0] : (config.rpc_node ? config.rpc_node : 'https://api.steemit.com');
@@ -27,7 +29,7 @@ function getWitness(id) {
                 resolve(result);
             } else {
                 reject(err);
-           }
+            }
         });
     });
 }   
@@ -62,7 +64,7 @@ async function startProcess() {
     const signing_key = account.signing_key;
     
     // already disabled, so no point to switch
-    if (signing_key === "STM1111111111111111111111111111111114T1Anm") {
+    if (signing_key === disabled_key) {
         throw "disabled already.";
     }
     
@@ -88,7 +90,9 @@ async function startProcess() {
             config.signing_keys.splice(index, 1);
         }
         if (config.signing_keys.length === 0) {
-            throw "Error, no signing key to use.";
+            // disable it just in case
+            switchTo(disabled_key, total_missed);
+            throw `Error, no signing key to use. Thus disable it by switching to ${disabled_key}`;
         }     
         switchTo(config.signing_keys[0]);
         // reset data
