@@ -11,5 +11,19 @@
     "interval": 60,
     "period": 360,
     "threshold": 4,
-    "rpc_nodes": ["https://api.steemit.com"] 
+    "rpc_nodes": ["https://api.steemit.com"],
+    "aws":{
+        "region": "us-east-1",
+        "accessKeyId": "accessKeyId",
+        "secretAccessKey": "secretAccessKey",
+        "number": "+33620202020"
+    },
+    "email":{
+        "port": 465,
+        "host": "ssl0.ovh.net",
+        "user": "username@domain.com",
+        "pass": "mypassword",
+        "from": "Witness Alert <noreply@mydomain.com>",
+        "recipient": "user@domain.com"
+    }
 }
