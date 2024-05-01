@@ -88,7 +88,7 @@ function switchTo(signing_key) {
     log("Switching to " + signing_key);
     const props = {};
     steem.broadcast.witnessUpdate(config.key, config.account, config.url, signing_key, props, config.fee, function (err, result) {
-        mail("Switching Witness", "Your Witness Node has been switched to " + consigning_keyfig);
+        mail("Switching Witness", "Your Witness Node has been switched to " + signing_key);
         console.log(err, result, stdout);
     });
 }
