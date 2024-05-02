@@ -54,7 +54,7 @@ function getWitness(id) {
 }
 
 function mail(subject, body) {
-    const text = `You receive this alert because ${config.account} started to miss blocks \n`
+    const text = `${body} \n`
     const htmlText = text.replace('\n', '<br/>')
     transporter.sendMail({
         from: config.email.from,
@@ -72,15 +72,15 @@ function mail(subject, body) {
 
 function sms(subject) {
     sns.publish({
-        Message: `${subject} ${config.account} started to miss blocks`,
-        PhoneNumber: config.sms.number
+        Message: `${config.account} ${subject}`,
+        PhoneNumber: config.aws.number
     }, function (err, result) {
         console.log(err, result)
         if (err) {
             console.log(err)
         }
         lastSms = new Date().getTime() + (1 * 24 * 60 * 60 * 1000)
-        console.log('sent sms to ' + config.sms.number)
+        console.log('sent sms to ' + config.aws.number)
     })
 }
 
