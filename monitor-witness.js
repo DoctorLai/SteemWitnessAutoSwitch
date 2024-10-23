@@ -16,11 +16,11 @@ const runInterval = functions.runInterval;
 const disabled_key = "STM1111111111111111111111111111111114T1Anm";
 
 // Use AWS with config
-const sns = new AWS.SNS({
+const sns = config.aws ? new AWS.SNS({
     region: config.aws.region,
     accessKeyId: config.aws.accessKeyId,
     secretAccessKey: config.aws.secretAccessKey
-})
+}) : null
 
 const transporter = nodemailer.createTransport({
     port: config.email.port,               // true for 465, false for other ports
@@ -71,6 +71,10 @@ function mail(subject, body) {
 }
 
 function sms(subject) {
+    if (sns === null) {
+        console.warn('not set aws config!');
+        return;
+    }
     sns.publish({
         Message: `${config.account} ${subject}`,
         PhoneNumber: config.aws.number
